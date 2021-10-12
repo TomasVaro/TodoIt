@@ -4,7 +4,7 @@ using TodoIt.Data;
 
 namespace TodoIt.Tests
 {
-    public class PersonSequencerTests
+    public class TodoSequencerTests
 	{
 		[Fact]
 		public void ResetTest()
@@ -12,7 +12,7 @@ namespace TodoIt.Tests
 			//Arrange
 			int expected = 0;
 			//Act
-			int resetPersonId = PersonSequencer.Reset();
+			int resetPersonId = TodoSequencer.ResetPersonId();
 			// Assert
 			Assert.Equal(expected, resetPersonId);
 		}
