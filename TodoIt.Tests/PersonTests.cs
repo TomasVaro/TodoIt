@@ -14,13 +14,12 @@ namespace TodoIt.Tests
 			string lastName = "Dubrovski";
 
 			//Act
-			Person person = null;
-			person = new Person(firstName, lastName);
+			Person person = new Person(firstName, lastName);
 
 			// Assert
 			Assert.NotNull(person);
-			//Assert.Equal(person.FirstName, firstName);
-			//Assert.Equal(person.LastName, lastName);
+			Assert.Equal(person.FirstName, firstName);
+			Assert.Equal(person.LastName, lastName);
 		}
 
 		[Theory]
