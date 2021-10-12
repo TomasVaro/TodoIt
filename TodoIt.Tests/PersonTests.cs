@@ -18,8 +18,8 @@ namespace TodoIt.Tests
 
 			// Assert
 			Assert.NotNull(person);
-			Assert.Equal(person.FirstName, firstName);
-			Assert.Equal(person.LastName, lastName);
+			Assert.Equal(firstName, person.FirstName);
+			Assert.Equal(lastName, person.LastName);
 		}
 
 		[Theory]

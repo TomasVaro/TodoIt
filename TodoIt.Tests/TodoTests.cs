@@ -55,7 +55,7 @@ namespace TodoIt.Tests
 
 			// Assert
 			Assert.NotNull(todo);
-			Assert.Equal(todo.Description, description);
+			Assert.Equal(description, todo.Description);
 		}
 	}
 }

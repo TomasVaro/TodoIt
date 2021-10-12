@@ -14,6 +14,8 @@ namespace TodoIt
             int todoId = 1;
             string descrption = "Köp mjölk";
             Todo todo = new Todo(todoId, descrption);
+
+            
             Console.ReadKey();
         }
     }
