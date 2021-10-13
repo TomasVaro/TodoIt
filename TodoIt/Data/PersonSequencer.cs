@@ -9,9 +9,14 @@ namespace TodoIt.Data
         private static int personId;
         public int PersonId { get { return personId; } }
 
+        public static int NextPersonId(int personId)
+        {
+            return personId = personId + 1;
+        }
+
         public static int Reset()
         {
-           return personId = 0;
+            return personId = 0;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using TodoIt.Model;
+using TodoIt.Data;
 
 namespace TodoIt
 {
@@ -15,6 +16,9 @@ namespace TodoIt
             string descrption = "Köp mjölk";
             Todo todo = new Todo(todoId, descrption);
 
+            int personId = 10;
+            //PersonSequencer personSequencer = new PersonSequencer();
+            personId = TodoSequencer.ResetPersonId();
             
             Console.ReadKey();
         }
