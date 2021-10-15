@@ -12,8 +12,9 @@ namespace TodoIt.Tests
 			//Arrange
 			string firstName = "Adam";
 			string lastName = "Dubrovski";
+			int personId = 7;
 			//Act
-			Person person = new Person(firstName, lastName);
+			Person person = new Person(personId, firstName, lastName);
 			// Assert
 			Assert.NotNull(person);
 			Assert.Equal(firstName, person.FirstName);
@@ -27,9 +28,10 @@ namespace TodoIt.Tests
 		{
 			//Arrange
 			string lastName = "Svensson";
+			int personId = 6;
 			//Act
 			ArgumentException result = Assert.Throws<ArgumentException>(
-				() => new Person(firstName, lastName));
+				() => new Person(personId, firstName, lastName));
 			// Assert
 			Assert.Equal("firstName needs to be a valid name.", result.Message);
 		}
@@ -41,11 +43,12 @@ namespace TodoIt.Tests
 		{
 			//Arrange
 			string firstName = "Peter";
+			int personId = 6;
 			//Act
-			ArgumentException result = Assert.Throws<ArgumentException>(
-				() => new Person(firstName, lastName));
+			ArgumentException actual = Assert.Throws<ArgumentException>(
+				() => new Person(personId, firstName, lastName));
 			// Assert
-			Assert.Equal("lastName needs to be a valid name.", result.Message);
+			Assert.Equal("lastName needs to be a valid name.", actual.Message);
 		}
 	}
 }

@@ -22,10 +22,9 @@ namespace TodoIt.Tests
 		public void ResetTest()
 		{
 			//Arrange
-			int personId = 10;
 			int expected = 0;
 			//Act
-			personId = TodoSequencer.ResetPersonId();
+			int personId = TodoSequencer.ResetPersonId();
 			// Assert
 			Assert.Equal(expected, personId);
 		}

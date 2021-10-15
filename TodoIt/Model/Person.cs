@@ -6,9 +6,6 @@ namespace TodoIt.Model
 {
     public class Person
     {
-        private static int idCounter = 0;
-        public static int IdCounter { get { return idCounter; } }
-
         private readonly int personId;
         public int PersonId { get { return personId; } }
 
@@ -38,9 +35,9 @@ namespace TodoIt.Model
             }
         }
 
-        public Person(string firstName, string lastName)
+        public Person(int personId, string firstName, string lastName)
         {
-            personId = ++idCounter;
+            this.personId = personId;
             FirstName = firstName;
             LastName = lastName;
         }

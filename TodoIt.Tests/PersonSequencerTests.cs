@@ -10,10 +10,9 @@ namespace TodoIt.Tests
         public void NextPersonIdTest()
         {
             //Arrange
-            int personId = 10;
-            int expected = 11;
+            int expected = 1;
             //Act
-            personId = PersonSequencer.NextPersonId(personId);
+            int personId = PersonSequencer.NextPersonId();
             // Assert
             Assert.Equal(expected, personId);
         }
@@ -22,10 +21,9 @@ namespace TodoIt.Tests
 		public void ResetTest()
 		{
             //Arrange
-            int personId = 10;
             int expected = 0;
             //Act
-			personId = PersonSequencer.Reset();
+			int personId = PersonSequencer.Reset();
 			// Assert
 			Assert.Equal(expected, personId);
 		}

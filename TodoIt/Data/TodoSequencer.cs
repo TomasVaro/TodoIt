@@ -11,7 +11,7 @@ namespace TodoIt.Data
 
         public static int IncrementPersonId(int personId)
         {
-            return personId = personId + 1;
+            return ++personId;
         }
 
         public static int ResetPersonId()
