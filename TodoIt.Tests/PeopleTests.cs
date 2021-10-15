@@ -14,21 +14,22 @@ namespace TodoIt.Tests
 			int expected = 0;
 			//Act
 			People people = new People();
-			int result = people.Size();
+			int actual = people.Size();
 			// Assert
-			Assert.Equal(expected, result);
+			Assert.Equal(expected, actual);
 		}
 
 		[Fact]
 		public void FindAllTest()
 		{
 			//Arrange
-			Person[] expected = new Person[0];
-			//Act
 			People people = new People();
-			Person[] result = people.FindAll();
+			int expectedSize = people.Person.Length;
+			//Act
+			Person[] actual = people.FindAll();
+			int actualSize = actual.Length;
 			// Assert
-			Assert.Equal(expected, result);
+			Assert.Equal(expectedSize, actualSize);
 		}
 
 		[Fact]
@@ -40,9 +41,9 @@ namespace TodoIt.Tests
 			int personId = expected.PersonId;
 			//Act
 			people = new People();
-			Person result = people.FindById(personId);
+			Person actual = people.FindById(personId);
 			// Assert
-			Assert.Equal(expected, result);
+			Assert.Equal(expected, actual);
 		}
 
 		[Fact]
@@ -67,7 +68,7 @@ namespace TodoIt.Tests
 		}
 
 		[Fact]
-        public void ClearTest2()
+        public void ClearTest()
         {
             //arrange
             int expectedSize = 0;

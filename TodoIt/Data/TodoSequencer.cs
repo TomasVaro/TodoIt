@@ -6,17 +6,17 @@ namespace TodoIt.Data
 {
     public class TodoSequencer
     {
-        private static int personId;
-        public int PersonId { get { return personId; } }
+        private static int todoId;
+        public int TodoId { get { return todoId; } }
 
-        public static int IncrementPersonId(int personId)
+        public static int NextTodoId()
         {
-            return ++personId;
+            return ++todoId;
         }
 
-        public static int ResetPersonId()
+        public static int ResetTodoId()
         {
-            return personId = 0;
+            return todoId = 0;
         }
     }
 }

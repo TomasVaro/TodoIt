@@ -7,15 +7,14 @@ namespace TodoIt.Tests
     public class TodoSequencerTests
 	{
 		[Fact]
-		public void NextPersonIdTest()
+		public void NextTodoIdTest()
 		{
 			//Arrange
-			int personId = 10;
-			int expected = 11;
+			int expected = 1;
 			//Act
-			personId = TodoSequencer.IncrementPersonId(personId);
+			int todoId = TodoSequencer.NextTodoId();
 			// Assert
-			Assert.Equal(expected, personId);
+			Assert.Equal(expected, todoId);
 		}
 
 		[Fact]
@@ -24,9 +23,9 @@ namespace TodoIt.Tests
 			//Arrange
 			int expected = 0;
 			//Act
-			int personId = TodoSequencer.ResetPersonId();
+			int todoId = TodoSequencer.ResetTodoId();
 			// Assert
-			Assert.Equal(expected, personId);
+			Assert.Equal(expected, todoId);
 		}
 	}
 }
