@@ -6,7 +6,7 @@ using TodoIt.Model;
 namespace TodoIt.Tests
 {
     public class TodoItemsTests
-    {
+	{
 		[Fact]
 		public void SizeTest()
 		{
@@ -67,13 +67,111 @@ namespace TodoIt.Tests
 		[Fact]
 		public void ClearTest()
 		{
-			//arrange
+			//Arrange
 			int expectedSize = 0;
-			//act
+			//Act
 			TodoItems todo = new TodoItems();
 			todo.Clear();
 			int actualSize = todo.Size();
-			// assert
+			//Assert
+			Assert.Equal(expectedSize, actualSize);
+		}
+
+		[Fact]
+		public void FindByDoneStatusTest()
+		{
+			//Arrange
+			bool doneStatus = false;
+			TodoItems todo = new TodoItems();
+			Todo[] findByDoneStatus = todo.FindByDoneStatus(doneStatus);
+			int expectedSize = findByDoneStatus.Length;
+			//Act
+			int actualSize = 0;
+			int actualSizeDone = 0;
+			int actualSizeNotDone = 0;
+			for (int i = 0; i < findByDoneStatus.Length; i++)
+            {
+                if (findByDoneStatus[i].Done == doneStatus)
+                {
+					actualSizeDone++;
+                }
+                else
+                {
+					actualSizeNotDone++;
+				}
+            }
+            if (actualSizeDone == expectedSize)
+            {
+				actualSize = actualSizeDone;
+			}
+			else if(actualSizeNotDone == expectedSize)
+            {
+				actualSize = actualSizeNotDone;
+			}
+			// Assert
+			Assert.Equal(expectedSize, actualSize);
+		}
+
+		[Fact]
+		public void FindByAssigneePersonIdTest()
+		{
+			//Arrange
+			int personId = 0;
+			TodoItems todo = new TodoItems();
+			Todo[] findByPersonId = todo.FindByAssignee(personId);
+			int expectedSize = findByPersonId.Length;
+			//Act
+			int actualSize = 0;
+			for (int i = 0; i < findByPersonId.Length; i++)
+			{
+				if (findByPersonId[i].Assignee.PersonId == personId)
+				{
+					actualSize++;
+				}
+			}
+			//Assert
+			Assert.Equal(expectedSize, actualSize);
+		}
+
+		[Fact]
+		public void FindByAssigneePersonTest()
+		{
+			//Arrange
+			int personId = PersonSequencer.NextPersonId() + 1;
+			Person assignee = new Person(personId, "Brad", "Pitt");
+			TodoItems todo = new TodoItems();
+			Todo[] findByAssignee = todo.FindByAssignee(assignee);
+			int expectedSize = 0;
+			for (int i = 0; i < findByAssignee.Length; i++)
+			{
+				if (findByAssignee[i].Assignee == assignee)
+				{
+					expectedSize++;
+				}
+			}
+			//Act
+			int actualSize = findByAssignee.Length;
+			//Assert
+			Assert.Equal(expectedSize, actualSize);
+		}
+
+		[Fact]
+		public void FindUnassignedTodoItemsTest()
+		{
+			//Arrange
+			TodoItems todo = new TodoItems();
+			Todo[] findUnassignedTodoItems = todo.FindUnassignedTodoItems();
+			int expectedSize = 0;
+			for (int i = 0; i < findUnassignedTodoItems.Length; i++)
+			{
+				if (findUnassignedTodoItems[i].Assignee.Equals(null))
+				{
+					expectedSize++;
+				}
+			}
+			//Act
+			int actualSize = findUnassignedTodoItems.Length;
+			//Assert
 			Assert.Equal(expectedSize, actualSize);
 		}
 	}

@@ -42,5 +42,57 @@ namespace TodoIt.Data
         {
             todo = new Todo[0];
         }
+        public Todo[] FindByDoneStatus(bool doneStatus)
+        {
+            Todo[] todoSameDone = new Todo[] { };
+            foreach (Todo t in Todo)
+            {
+                if (doneStatus == t.Done)
+                {
+                    Array.Resize(ref todoSameDone, todoSameDone.Length + 1);
+                    todoSameDone[todoSameDone.Length - 1] = t;
+                }
+            }
+            return todoSameDone;
+        }
+        public Todo[] FindByAssignee(int personId)
+        {
+            Todo[] todoSamePersonId = new Todo[] { };
+            foreach (Todo t in Todo)
+            {
+                if (personId == t.Assignee.PersonId)
+                {
+                    Array.Resize(ref todoSamePersonId, todoSamePersonId.Length + 1);
+                    todoSamePersonId[todoSamePersonId.Length - 1] = t;
+                }
+            }
+            return todoSamePersonId;
+        }
+        public Todo[] FindByAssignee(Person assignee)
+        {
+            Todo[] todoSameAssignee = new Todo[] { };
+            foreach (Todo t in Todo)
+            {
+                if (assignee == t.Assignee)
+                {
+                    Array.Resize(ref todoSameAssignee, todoSameAssignee.Length + 1);
+                    todoSameAssignee[todoSameAssignee.Length - 1] = t;
+                }
+            }
+            return todoSameAssignee;
+        }
+        public Todo[] FindUnassignedTodoItems()
+        {
+            Todo[] todoUnassigned = new Todo[] { };
+            foreach (Todo t in Todo)
+            {
+                if (t.Assignee.Equals(null))
+                {
+                    Array.Resize(ref todoUnassigned, todoUnassigned.Length + 1);
+                    todoUnassigned[todoUnassigned.Length - 1] = t;
+                }
+            }
+            return todoUnassigned;
+        }
     }
 }

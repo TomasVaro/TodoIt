@@ -34,6 +34,7 @@ namespace TodoIt.Data
         {
             int personId = PersonSequencer.NextPersonId();
             Person newPerson = new Person(personId, firstName, lastName);
+
             Array.Resize(ref person, person.Length + 1);
             person[person.Length - 1] = newPerson;
             return newPerson;
