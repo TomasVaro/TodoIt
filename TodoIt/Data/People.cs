@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TodoIt.Model;
 
@@ -42,6 +43,18 @@ namespace TodoIt.Data
         public void Clear()
         {
             person = new Person[0];
+        }
+        public void RemovePersonFromArray(Person personToRemove)
+        {
+            for (int i = 0; i < person.Length; i++)
+            {
+                if (Person[i].FirstName == personToRemove.FirstName 
+                    && Person[i].LastName == personToRemove.LastName
+                    && Person[i].PersonId == personToRemove.PersonId)
+                {
+                    person = person.Where((source, index) => index != i).ToArray();
+                }
+            }
         }
     }
 }

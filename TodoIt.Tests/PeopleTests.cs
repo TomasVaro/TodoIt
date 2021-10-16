@@ -11,9 +11,11 @@ namespace TodoIt.Tests
 		public void SizeTest()
 		{
 			//Arrange
-			int expected = 0;
-			//Act
 			People people = new People();
+			people.CreateNewPerson("Brad", "Pitt");
+			people.CreateNewPerson("Bob", "Marley");
+			int expected = 2;
+			//Act
 			int actual = people.Size();
 			// Assert
 			Assert.Equal(expected, actual);
@@ -71,13 +73,34 @@ namespace TodoIt.Tests
         public void ClearTest()
         {
             //arrange
+			People people = new People();
+			PersonSequencer.Reset();
+			people.CreateNewPerson("Brad", "Pitt");
+			people.CreateNewPerson("Bob", "Marley");
             int expectedSize = 0;
             //act
-            People people = new People();
             people.Clear();
             int actualSize = people.Size();
             // assert
             Assert.Equal(expectedSize, actualSize);
         }
-    }
+
+		[Fact]
+		public void RemovePersonFromArrayTest()
+		{
+			//arrange
+			People people = new People();
+			people.Clear();
+			PersonSequencer.Reset();
+			people.CreateNewPerson("Brad", "Pitt");
+			people.CreateNewPerson("Bob", "Marley");
+			int expectedLength =  people.Person.Length - 1;
+			//act
+			Person person = new Person(1, "Brad", "Pitt");
+			people.RemovePersonFromArray(person);
+			int actualLength = people.Person.Length;
+			// assert
+			Assert.Equal(expectedLength, actualLength);
+		}
+	}
 }

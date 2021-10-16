@@ -10,6 +10,7 @@ namespace TodoIt.Tests
         public void NextPersonIdTest()
         {
             //Arrange
+            PersonSequencer.Reset();
             int expected = 1;
             //Act
             int personId = PersonSequencer.NextPersonId();

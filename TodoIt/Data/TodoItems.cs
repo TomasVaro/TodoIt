@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TodoIt.Model;
 
@@ -93,6 +94,17 @@ namespace TodoIt.Data
                 }
             }
             return todoUnassigned;
+        }
+        public void RemoveTodoItemFromArray(Todo todoToRemove)
+        {
+            for (int i = 0; i < todo.Length; i++)
+            {
+                if (Todo[i].TodoId == todoToRemove.TodoId
+                    && Todo[i].Description == todoToRemove.Description)
+                {
+                    todo = todo.Where((source, index) => index != i).ToArray();
+                }
+            }
         }
     }
 }

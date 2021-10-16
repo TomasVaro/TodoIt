@@ -174,5 +174,23 @@ namespace TodoIt.Tests
 			//Assert
 			Assert.Equal(expectedSize, actualSize);
 		}
+
+		[Fact]
+		public void RemoveTodoItemFromArrayTest()
+		{
+			//arrange
+			TodoItems todoItems = new TodoItems();
+			todoItems.Clear();
+			TodoSequencer.ResetTodoId();
+			todoItems.CreateNewTodo("Fixa tvätten");
+			todoItems.CreateNewTodo("Gå och handla");
+			int expectedLength = todoItems.Todo.Length - 1;
+			//act
+			Todo todo = new Todo(2, "Gå och handla");
+			todoItems.RemoveTodoItemFromArray(todo);
+			int actualLength = todoItems.Todo.Length;
+			// assert
+			Assert.Equal(expectedLength, actualLength);
+		}
 	}
 }
