@@ -87,7 +87,7 @@ namespace TodoIt.Data
             Todo[] todoUnassigned = new Todo[] { };
             foreach (Todo t in Todo)
             {
-                if (t.Assignee.Equals(null))
+                if (t.Assignee == null)
                 {
                     Array.Resize(ref todoUnassigned, todoUnassigned.Length + 1);
                     todoUnassigned[todoUnassigned.Length - 1] = t;

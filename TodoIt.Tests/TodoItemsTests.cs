@@ -11,10 +11,12 @@ namespace TodoIt.Tests
 		public void SizeTest()
 		{
 			//Arrange
-			int expected = 0;
+			TodoItems todoItems = new TodoItems();
+			todoItems.CreateNewTodo("Handla mat");
+			todoItems.CreateNewTodo("Mocka i stallet");
+			int expected = 2;
 			//Act
-			TodoItems todo = new TodoItems();
-			int actual = todo.Size();
+			int actual = todoItems.Size();
 			// Assert
 			Assert.Equal(expected, actual);
 		}
@@ -68,13 +70,13 @@ namespace TodoIt.Tests
 		public void ClearTest()
 		{
 			//Arrange
-			int expectedSize = 0;
+			TodoItems todoItems = new TodoItems();
+			todoItems.CreateNewTodo("Vattna blommorna");
+			todoItems.CreateNewTodo("Klippa gräset");
 			//Act
-			TodoItems todo = new TodoItems();
-			todo.Clear();
-			int actualSize = todo.Size();
+			todoItems.Clear();
 			//Assert
-			Assert.Equal(expectedSize, actualSize);
+			Assert.Empty(todoItems.Todo);
 		}
 
 		[Fact]
@@ -82,8 +84,10 @@ namespace TodoIt.Tests
 		{
 			//Arrange
 			bool doneStatus = false;
-			TodoItems todo = new TodoItems();
-			Todo[] findByDoneStatus = todo.FindByDoneStatus(doneStatus);
+			TodoItems todoItems = new TodoItems();
+			todoItems.CreateNewTodo("Vattna blommorna");
+			todoItems.CreateNewTodo("Klippa gräset");
+			Todo[] findByDoneStatus = todoItems.FindByDoneStatus(doneStatus);
 			int expectedSize = findByDoneStatus.Length;
 			//Act
 			int actualSize = 0;
@@ -116,9 +120,10 @@ namespace TodoIt.Tests
 		public void FindByAssigneePersonIdTest()
 		{
 			//Arrange
-			int personId = 0;
-			TodoItems todo = new TodoItems();
-			Todo[] findByPersonId = todo.FindByAssignee(personId);
+			int personId = 1;
+			TodoItems todoItems = new TodoItems();
+			todoItems.Clear();
+			Todo[] findByPersonId = todoItems.FindByAssignee(personId);
 			int expectedSize = findByPersonId.Length;
 			//Act
 			int actualSize = 0;
@@ -159,12 +164,14 @@ namespace TodoIt.Tests
 		public void FindUnassignedTodoItemsTest()
 		{
 			//Arrange
-			TodoItems todo = new TodoItems();
-			Todo[] findUnassignedTodoItems = todo.FindUnassignedTodoItems();
+			TodoItems todoItems = new TodoItems();
+			todoItems.CreateNewTodo("Vattna blommorna");
+			todoItems.CreateNewTodo("Klippa gräset");
+			Todo[] findUnassignedTodoItems = todoItems.FindUnassignedTodoItems();
 			int expectedSize = 0;
 			for (int i = 0; i < findUnassignedTodoItems.Length; i++)
 			{
-				if (findUnassignedTodoItems[i].Assignee.Equals(null))
+				if (findUnassignedTodoItems[i].Assignee == null)
 				{
 					expectedSize++;
 				}

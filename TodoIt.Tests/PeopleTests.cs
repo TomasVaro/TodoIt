@@ -26,6 +26,8 @@ namespace TodoIt.Tests
 		{
 			//Arrange
 			People people = new People();
+			people.CreateNewPerson("Brad", "Pitt");
+			people.CreateNewPerson("Bob", "Marley");
 			int expectedSize = people.Person.Length;
 			//Act
 			Person[] actual = people.FindAll();
@@ -39,13 +41,13 @@ namespace TodoIt.Tests
 		{
 			//Arrange
 			People people = new People();
-			Person expected = people.CreateNewPerson("Brad", "Pitt");
-			int personId = expected.PersonId;
+			people.CreateNewPerson("Bob", "Marley");
+			Person expectedPerson = people.CreateNewPerson("Brad", "Pitt");
+			int expectedId = expectedPerson.PersonId;
 			//Act
-			people = new People();
-			Person actual = people.FindById(personId);
+			Person actualPerson = people.FindById(expectedId);
 			// Assert
-			Assert.Equal(expected, actual);
+			Assert.Equal(expectedPerson, actualPerson);
 		}
 
 		[Fact]
@@ -72,34 +74,31 @@ namespace TodoIt.Tests
 		[Fact]
         public void ClearTest()
         {
-            //arrange
+            //Arrange
 			People people = new People();
-			PersonSequencer.Reset();
 			people.CreateNewPerson("Brad", "Pitt");
 			people.CreateNewPerson("Bob", "Marley");
-            int expectedSize = 0;
-            //act
+            //Act
             people.Clear();
-            int actualSize = people.Size();
-            // assert
-            Assert.Equal(expectedSize, actualSize);
+			//Assert
+			Assert.Empty(people.Person);
         }
 
 		[Fact]
 		public void RemovePersonFromArrayTest()
 		{
-			//arrange
+			//Arrange
 			People people = new People();
 			people.Clear();
 			PersonSequencer.Reset();
 			people.CreateNewPerson("Brad", "Pitt");
 			people.CreateNewPerson("Bob", "Marley");
 			int expectedLength =  people.Person.Length - 1;
-			//act
+			//Act
 			Person person = new Person(1, "Brad", "Pitt");
 			people.RemovePersonFromArray(person);
 			int actualLength = people.Person.Length;
-			// assert
+			//Assert
 			Assert.Equal(expectedLength, actualLength);
 		}
 	}

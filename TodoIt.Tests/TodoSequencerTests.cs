@@ -10,6 +10,7 @@ namespace TodoIt.Tests
 		public void NextTodoIdTest()
 		{
 			//Arrange
+			TodoSequencer.ResetTodoId();
 			int expected = 1;
 			//Act
 			int todoId = TodoSequencer.NextTodoId();
