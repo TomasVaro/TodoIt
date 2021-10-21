@@ -15,7 +15,7 @@ namespace TodoIt.Tests
 			int personId = 7;
 			//Act
 			Person person = new Person(personId, firstName, lastName);
-			// Assert
+			//Assert
 			Assert.NotNull(person);
 			Assert.Equal(firstName, person.FirstName);
 			Assert.Equal(lastName, person.LastName);
@@ -33,7 +33,7 @@ namespace TodoIt.Tests
 			string lastName = "Dione";
 			//Act
 			Person person = new Person(personId, firstName, lastName);
-			// Assert
+			//Assert
 			Assert.NotNull(person);
 			Assert.Equal(person.PersonId, personId);
 		}
@@ -49,7 +49,7 @@ namespace TodoIt.Tests
 			//Act
 			ArgumentException result = Assert.Throws<ArgumentException>(
 				() => new Person(personId, firstName, lastName));
-			// Assert
+			//Assert
 			Assert.Equal("firstName needs to be a valid name.", result.Message);
 		}
 
@@ -60,13 +60,13 @@ namespace TodoIt.Tests
 		[InlineData("Linnéa")]
 		public void FirstNameInputCheck(string firstName)
         {
-			// Arrange
+			//Arrange
 			int personId = 5;
 			string lastName = "Nilsson";
-			// Act
+			//Act
 			Person person = new Person(personId, firstName, lastName);
 			string actualFirstName = person.FirstName;
-			// Assert
+			//Assert
 			Assert.Equal(firstName, actualFirstName);
         }
 
@@ -81,7 +81,7 @@ namespace TodoIt.Tests
 			//Act
 			ArgumentException actual = Assert.Throws<ArgumentException>(
 				() => new Person(personId, firstName, lastName));
-			// Assert
+			//Assert
 			Assert.Equal("lastName needs to be a valid name.", actual.Message);
 		}
 
@@ -92,13 +92,13 @@ namespace TodoIt.Tests
 		[InlineData("Bidén")]
 		public void LastNameInputCheck(string lastName)
 		{
-			// Arrange
+			//Arrange
 			int personId = 5;
 			string firstName = "Bengt";
-			// Act
+			//Act
 			Person person = new Person(personId, firstName, lastName);
 			string actualLastName = person.LastName;
-			// Assert
+			//Assert
 			Assert.Equal(lastName, actualLastName);
 		}
 	}

@@ -14,7 +14,7 @@ namespace TodoIt.Tests
 			string description = "Köp mjölk";
 			//Act
 			Todo todo = new Todo(todoId, description);
-			// Assert
+			//Assert
 			Assert.NotNull(todo);
 			Assert.Equal(todo.TodoId, todoId);
 			Assert.Equal(todo.Description, description);
@@ -31,7 +31,7 @@ namespace TodoIt.Tests
             string description = "Köp mölk!";
             //Act
             Todo todo = new Todo(todoId, description);
-            // Assert
+            //Assert
             Assert.NotNull(todo);
             Assert.Equal(todo.TodoId, todoId);
         }
@@ -47,7 +47,7 @@ namespace TodoIt.Tests
 			int todoId = 10;
 			//Act
 			Todo todo = new Todo(todoId, description);
-			// Assert
+			//Assert
 			Assert.NotNull(todo);
 			Assert.Equal(description, todo.Description);
 		}

@@ -17,7 +17,7 @@ namespace TodoIt.Tests
 			int expected = 2;
 			//Act
 			int actual = todoItems.Size();
-			// Assert
+			//Assert
 			Assert.Equal(expected, actual);
 		}
 
@@ -30,7 +30,7 @@ namespace TodoIt.Tests
 			//Act
 			Todo[] actual = todoItems.FindAll();
 			int actualSize = actual.Length;
-			// Assert
+			//Assert
 			Assert.Equal(expectedSize, actualSize);
 		}
 
@@ -44,7 +44,7 @@ namespace TodoIt.Tests
 			//Act
 			todo = new TodoItems();
 			Todo actual = todo.FindById(todoId);
-			// Assert
+			//Assert
 			Assert.Equal(expected, actual);
 		}
 
@@ -61,7 +61,7 @@ namespace TodoIt.Tests
 			Todo actualTodo = todo.CreateNewTodo("Köp mer mjölk!");
 			int actualId = actualTodo.TodoId;
 			string actualDescription = actualTodo.Description;
-			// Assert
+			//Assert
 			Assert.Equal(expectedId, actualId);
 			Assert.Equal(expectedDescription, actualDescription);
 		}
@@ -112,7 +112,7 @@ namespace TodoIt.Tests
             {
 				actualSize = actualSizeNotDone;
 			}
-			// Assert
+			//Assert
 			Assert.Equal(expectedSize, actualSize);
 		}
 
@@ -185,18 +185,18 @@ namespace TodoIt.Tests
 		[Fact]
 		public void RemoveTodoItemFromArrayTest()
 		{
-			//arrange
+			//Arrange
 			TodoItems todoItems = new TodoItems();
 			todoItems.Clear();
 			TodoSequencer.ResetTodoId();
 			todoItems.CreateNewTodo("Fixa tvätten");
 			todoItems.CreateNewTodo("Gå och handla");
 			int expectedLength = todoItems.Todo.Length - 1;
-			//act
+			//Act
 			Todo todo = new Todo(2, "Gå och handla");
 			todoItems.RemoveTodoItemFromArray(todo);
 			int actualLength = todoItems.Todo.Length;
-			// assert
+			//Assert
 			Assert.Equal(expectedLength, actualLength);
 		}
 	}

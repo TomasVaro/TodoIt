@@ -14,7 +14,7 @@ namespace TodoIt.Tests
             int expected = 1;
             //Act
             int personId = PersonSequencer.NextPersonId();
-            // Assert
+            //Assert
             Assert.Equal(expected, personId);
         }
 
@@ -25,7 +25,7 @@ namespace TodoIt.Tests
             int expected = 0;
             //Act
 			int personId = PersonSequencer.Reset();
-			// Assert
+			//Assert
 			Assert.Equal(expected, personId);
 		}
 	}
